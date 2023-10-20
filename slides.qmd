@@ -282,6 +282,14 @@ Es importancia crear vínculos con otras áreas del mismo instituto, otros organ
 - **Y otras cositas más por que ¿cuándo se termina una Shiny? :alien: **
 :::
 
+## Referencias
+ <br>
+ 
+ 
+- INDEC (2020). [Sistema Integrado de Estadísticas Sociales: indicadores de bienestar para la Argentina. Documento de trabajo INDEC N° 31.](https://www.indec.gob.ar/ftp/cuadros/publicaciones/publicacion_sies.pdf)
+
+- Maguid, A. (2000). El sistema de indicadores sociales de Argentina, Buenos Aires, Indec.
+
 # Gracias 
 
 
