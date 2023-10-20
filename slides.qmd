@@ -1,0 +1,288 @@
+---
+title: "SIES Argentina: R & Shiny en la difusión de estadísticas oficiales"
+author: "Andrea Gomez Vargas, María Florencia Bathory, Juan Manuel Damiani, Barbara Estévez Leston, Jimena Fernández Moyano y Leandro Olivo"
+#institute: "Instituto Nacional de Estadística y Censos de la República Argentina INDEC"
+#date: "2023/10/20"
+format:
+  revealjs: 
+    theme: custom.scss
+    self-contained: false
+    slide-number: c/t
+    logo: images/HexLatinR2.png
+    footer: "[shiny.indec.gob.ar/SIES](https://shiny.indec.gob.ar/sies/)"
+from: markdown+emoji
+---
+
+## ¡Hola 👋!
+
+
+<br>
+Equipo de la Dirección de Estadísticas Sectoriales dependiente de la Dirección Nacional de Estadísticas Sociales y de Población
+
+![](https://www.indec.gob.ar/Images_WEBINDEC/Logo/Logo_Indec.png){width=40%}
+
+
+## Temario
+
+<br>
+
+::: {.incremental}
+- Qué es el SIES
+- Proceso de trabajo
+- Aprendizajes y desafíos
+- Próximos pasos
+:::
+
+# Qué es el SIES {background-color="#2B5597"}
+
+## 
+
+<br>
+El **Sistema Integrado de Estadísticas Sociales (SIES)** es un compendio de estadísticas sociales que propone una estructura ordenadora para abordar de manera multidimensional los aspectos que hacen al bienestar.
+<br>
+<br>
+Con el objetivo de presentar un abordaje federal  desde el enfoque de capacidades en la Argentina, se pone a disposición de las personas usuarias una visualización interactiva del SIES. 
+
+
+
+##
+
+:::: {.columns}
+
+::: {.column width="50%"}
+<br>
+<br>
+De esta manera, se brinda la posibilidad de realizar una selección de los indicadores a demanda y obtener resultados para descargar y graficar a través de una Shiny app.
+:::
+
+::: {.column width="50%"}
+<br>
+<br>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+#| layout: [[120]]
+#|
+library(readxl)
+library(plotly)
+sun <- read_excel("data/sun.xlsx")
+
+
+  
+sun2 <-  plot_ly(
+      #width = "100%", height = "100%",
+      labels = sun$labels,
+      parents = sun$parents,
+      ids= sun$ids,
+      type = 'sunburst',
+      #branchvalues = 'total',
+      domain=list(column=1),
+      maxdepth=3,
+      insidetextorientation='tangencial',
+      marker = list(
+        colors = list("#FFFFFF", #SIES
+                      "#464B6C", #Bienestar Actual 
+                      "#A183A3", #Bienestar futuro
+                      "#FDC730", #Condiciones materiales 
+                      "#f4a03d", #Calidad de vida #F39425
+                      "#EFB100", #sostenibilidad #EFB100
+                      "#6b7bba", #vivienda #4D5FA5
+                      "#d87f67", #ingreso #cd5d3f
+                      "#7d56b9", #empleo #593989
+                      "#62A0B6", #educaciÃ³n y habilidades
+                      "#0ba56f", #estado de salud #08754F
+                      "#B25DA1", #equilibrio vida -trabajo
+                      #"#F18668", #seguridad social
+                      #"#0076A2", #seguridad personal
+                      "#D6C059", #compromiso civico
+                      "#54c572" #capital humano
+                      #"#54c572", #capital social
+                      #"#34984F", #capital econÃ³mico
+                      #"#34984F"  #capital natural
+        )
+        )) #%>% layout(plot_bgcolor='red') %>% layout(paper_bgcolor='#2B5597') 
+sun2
+```
+
+:::
+
+::::
+
+
+# Antecedente
+
+## SESD
+```{r}
+#knitr::include_url("https://www.indec.gob.ar/indec/web/Institucional-Indec-IndicadoresSociodemograficos")
+```
+
+
+```{=html}
+<iframe width="1300" height="500" src="https://www.indec.gob.ar/indec/web/Institucional-Indec-IndicadoresSociodemograficos/" title="Webpage example"></iframe>
+```
+
+## 
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Excel_%282019%E2%80%93present%29.svg.png){width=10%}
+<br>
+
+![](images/SESD_ejemplo.png)
+
+
+# Proceso de trabajo {background-color="#2B5597"}
+
+# Paso de una programación intuitiva a una programación reactiva
+
+
+##
+::: {.incremental}
+:::: {.columns}
+::: {.column width="50%"}
+<br>
+![](images/R_logo.png){width=40%}
+:::
+::: {.column width="50%"}
+<br>
+![](images/shiny_hex.png){width=40%}
+:::
+::::
+
+![](images/package.png)
+
+:::
+
+## Integración de fuentes y elaboración de la base propia `{tidy}`
+<br>
+
+Fuentes de datos:
+
+
+- Censos Nacionales de Población, Hogares y Viviendas 
+
+- Encuestas
+
+- Registros administrativos
+
+## Datavis - interfaz gráfica `{plotly}`
+
+
+![](images/grafico.png)
+
+## Datavis - interfaz tablas `{DT}`
+
+![](images/tabla.png)
+
+
+## Datavis - interfaz tablas `{plotly}`
+
+![](images/ficha_tecnica.png)
+
+
+## Datavis - interfaz gráfica `{plotly}`
+
+![](images/eva_reciente.png)
+
+## Datavis - interfaz gráfica `{highcharter}`
+
+![](images/eva_aquiyahora.PNG)
+
+
+## Producción en `{Shiny}`
+
+:::: {.columns}
+::: {.column width="50%"}
+ 
+![](images/meme7.jpeg){width=80%}
+
+![](images/meme4.jpeg){width=70%}
+:::
+
+::: {.column width="50%"}
+![](images/meme2.jpeg){width=70%}
+
+
+![](images/meme3.jpeg){width=70%}
+
+
+:::
+::::
+
+
+## Producción en `{Shiny}`
+
+:::: {.columns}
+::: {.column width="50%"}
+
+![](images/meme8.jpeg){width=80%}
+
+
+![](images/meme5.jpeg){width=80%} 
+
+
+:::
+
+::: {.column width="50%"}
+
+![](images/meme1.jpg){width=80%} 
+
+
+![](images/meme6.jpeg){width=90%} 
+:::
+::::
+
+
+
+# Aprendizajes y desafíos {background-color="#2B5597"}
+
+## 
+
+- Flexibilidad del Estado para hacer(lo) pero no sabes las limitaciones de estructura y de proceso
+- Posibilidades de desarrollo de marcos conceptuales a nuevas herramientas de software y de difusión
+- Existe un costo técnico  en implementar nuevas prácticas y nuevos software
+- Hay una parte donde se puede avanzar intuitivamente pero en otra se precisa un aprendizaje técnico muy específico
+
+
+## Redes
+
+Es importancia crear vínculos con otras áreas del mismo instituto, otros organismos y comunidades de R 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](images/ayuda.gif){width=80%}
+:::
+::: {.column width="50%"}
+![](images/indec_azul.png){width=50%}
+![](images/sinta.PNG){width=50%}
+![](images/rladies.png){width=50%}
+
+
+:::
+::::
+
+# Próximos pasos {background-color="#2B5597"}
+
+## 
+
+::: {.incremental}
+- Actualización de fuentes
+- Adición de nuevos indicadores y dimensiones pendientes de publicación
+
+- Implementación de control de versiones
+- Optimización del código
+- Incorporación de nuevas librerías
+:::
+
+##
+
+::: {.incremental}
+- Mejoras en la visualización 
+- Nuevas adaptaciones de Shiny:
+    - Modularización
+    - Test de rendimiento
+    - Caché
+- **Y otras cositas más por que ¿cuándo se termina una Shiny? :alien: **
+:::
+
+# Gracias 
+
+
+# [shiny.indec.gob.ar/SIES](https://shiny.indec.gob.ar/sies/)
