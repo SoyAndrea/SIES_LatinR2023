@@ -137,7 +137,7 @@ sun2
 :::: {.columns}
 ::: {.column width="50%"}
 <br>
-![](images/R_logo.png){width=40%}
+![](images/R_logo.png){width=50%}
 :::
 ::: {.column width="50%"}
 <br>
@@ -291,6 +291,3 @@ Es importancia crear vínculos con otras áreas del mismo instituto, otros organ
 - Maguid, A. (2000). El sistema de indicadores sociales de Argentina, Buenos Aires, Indec.
 
 # Gracias 
-
-
-# [shiny.indec.gob.ar/SIES](https://shiny.indec.gob.ar/sies/)
