@@ -1,15 +1,13 @@
 ---
 title: "SIES Argentina: R & Shiny en la difusión de estadísticas oficiales"
 author: "Andrea Gomez Vargas, María Florencia Bathory, Juan Manuel Damiani, Barbara Estévez Leston, Jimena Fernández Moyano y Leandro Olivo"
-#institute: "Instituto Nacional de Estadística y Censos de la República Argentina INDEC"
-#date: "2023/10/20"
 format:
   revealjs: 
     theme: custom.scss
     self-contained: false
     slide-number: c/t
     logo: images/HexLatinR2.png
-    footer: "[shiny.indec.gob.ar/SIES](https://shiny.indec.gob.ar/sies/)"
+    footer: "[**shiny.indec.gob.ar/SIES**](https://shiny.indec.gob.ar/sies/)"
 from: markdown+emoji
 ---
 
@@ -129,7 +127,7 @@ sun2
 
 # Proceso de trabajo {background-color="#2B5597"}
 
-# Paso de una programación intuitiva a una programación reactiva
+# Paso de una `programación intuitiva` a una `programación reactiva`
 
 
 ##
@@ -137,7 +135,7 @@ sun2
 :::: {.columns}
 ::: {.column width="50%"}
 <br>
-![](images/R_logo.png){width=50%}
+![](images/R_logo.png){width=60%}
 :::
 ::: {.column width="50%"}
 <br>
